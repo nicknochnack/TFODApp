@@ -1,68 +1,43 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Tensorflow Object Detection React Application
+<p>This template app can be used for real time object detection by leveraging the Tensorflow Object Detection API, React and Tensorflow JS. In order to leverage this template, first walk through the Tensorflow Object Detection Course available on <a href="https://www.youtube.com/c/nicholasrenotte">YouTube</a>. Complete the Notebook up to Step 11. Conversion to TFJS.  
+<img src="">
 
-## Available Scripts
+## Steps
+<br />
+<b>Step 1.</b> Clone this repository: https://github.com/nicknochnack/TFODApp
+<br/><br/>
+<b>Step 2.</b> Install Node https://nodejs.org/en/
+<br/><br/>
+<b>Step 3.</b> Install App Depdendencies 
+<pre>npm install</pre>
+<br/><br/>
+<b>Step 4.</b> Create a new free object storage repository on IBM Cloud <a href="https://cloud.ibm.com/objectstorage/create">Create Cloud Object Storage Bucket</a> 
+<br/><br/>
+<b>Step 5.</b> Create a new bucket and store model.json and .bin files into the bucket.</a> 
+<img src="https://i.imgur.com/lN9lFLJ.png">
+<br/><br/>
+<b>Step 6.</b> Enable public access policy.</a> 
+<img src="https://i.imgur.com/sstZfBG.png">
+<br/><br/>
+<b>Step 7.</b> Download and install the Cloud Object Store plugin.</a> 
+<br/><br/>
+<b>Step 8.</b> Login to the IBM Cloud CLI, target the right region and run the following command from inside of the TFODApp folder.</a> 
+<pre>ibmcloud cos bucket-cors-put --bucket livelong --cors-configuration file://corsconfig.json</pre>
+<br/><br/>
+<b>Step 9.</b> Update the following line with the link to your model.json file inside of the cloud bucket.</a> 
+<pre>
+const net = await tf.loadGraphModel('YOUR MODEL.json file here')
+// e.g. const net = await tf.loadGraphModel('https://livelong.s3.au-syd.cloud-object-storage.appdomain.cloud/model.json')
+</pre>
+This URI is available from your bucket. Select the model.json file then choose object details and the link will be made available. 
+<img src="https://i.imgur.com/hdsg0fz.png">
+<br/><br/>
+<b>Step 10.</b> Update the labelmap inside of utilities.js with your labels.</a> 
+<br/><br/>
+<b>Step 11.</b> Start the app by running npm start.</a> 
+<pre>npm start</pre>
+<br/><br/>
 
-In the project directory, you can run:
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

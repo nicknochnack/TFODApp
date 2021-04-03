@@ -1,10 +1,9 @@
 // Define our labelmap
 const labelMap = {
-    1:{name:'Hello', color:'red'},
-    2:{name:'Thank You', color:'yellow'},
-    3:{name:'I Love You', color:'lime'},
-    4:{name:'Yes', color:'blue'},
-    5:{name:'No', color:'purple'},
+    1:{name:'ThumbsUp', color:'red'},
+    2:{name:'ThumbsDown', color:'yellow'},
+    3:{name:'ThankYou', color:'lime'},
+    4:{name:'LiveLong', color:'blue'},
 }
 
 // Define a drawing function
@@ -24,7 +23,7 @@ export const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight,
             // DRAW!!
             ctx.beginPath()
             ctx.fillText(labelMap[text]['name'] + ' - ' + Math.round(scores[i]*100)/100, x*imgWidth, y*imgHeight-10)
-            ctx.rect(x*imgWidth, y*imgHeight, width*imgWidth/2, height*imgHeight/1.5);
+            ctx.rect(x*imgWidth, y*imgHeight, width*imgWidth/2, height*imgHeight/2);
             ctx.stroke()
         }
     }
